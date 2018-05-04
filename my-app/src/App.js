@@ -10,6 +10,8 @@ class App extends Component {
     this.state = {
       projects: [],
       mounted: false,
+      name: '',
+      description: ''
     }
   }
 
@@ -57,6 +59,7 @@ class App extends Component {
       })
 
       this.setState({
+        ...this.state,
         name: '',
         description: ''
       })
@@ -87,8 +90,8 @@ class App extends Component {
       )}
       <div className="form">
         <form onSubmit={this.addProject}>
-              <input onChange={this.handleInputChange} name="name" placeholder="Name" type="text"/>
-              <input onChange={this.handleInputChange} name="description" placeholder="Description" type="text"/>
+              <input value={this.state.name} onChange={this.handleInputChange} name="name" placeholder="Name" type="text"/>
+              <input value={this.state.description} onChange={this.handleInputChange} name="description" placeholder="Description" type="text"/>
               <button type="submit">Submit</button>
           </form>
       </div>
