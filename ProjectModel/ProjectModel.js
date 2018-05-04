@@ -25,6 +25,17 @@ router.get("/:id", (req, res) => {
     })
 })
 
+router.get("/:id/:id", (req, res) => {
+    id = req.params.id
+    projectDb.getProjectActions(id).then(response => {
+        res.status(200).json(response)
+    }).catch(err => {
+        res.status(500).json({
+            error: "Could not get a response"
+        })
+    })
+})
+
 
 //Post needs project_id, description, notes, and completed
 router.post("/", (req, res) => {
