@@ -40,15 +40,21 @@ router.get("/:id/:id", (req, res) => {
 //Post needs project_id, description, notes, and completed
 router.post("/", (req, res) => {
     newPost = req.body;
-    projectDb.insert(newPost).then(response => {
-        res.status(200).json({
-            message: "Post inserted successfully"
+    if(newPost.name.length === 0 || newPost.description.length === 0) {
+        res.status(400).json({
+            message: "Could not post, please insert all fields"
         })
-    }).catch(err => {
-        res.status(500).json({
-            error: "Could not get a response"
+    } else if(newPost.name.length > 0 || newPost.description.length > 0) {
+        projectDb.insert(newPost).then(response => {
+            res.status(200).json({
+                message: "posted successfully"
+            })
+        }).catch(err => {
+            res.status(500).json({
+                error: "Could not post action"
+            })
         })
-    })
+    }
 })
 
 router.put("/:id", (req, res) => {

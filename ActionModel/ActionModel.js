@@ -29,15 +29,21 @@ router.get("/:id", (req, res) => {
 //Post needs project_id, description, notes, and completed
 router.post("/", (req, res) => {
     newPost = req.body;
-    actionDb.insert(newPost).then(response => {
-        res.status(200).json({
-            message: "Post inserted successfully"
+    if(newPost.description.length === 0 || newPost.notes.length === 0 || newPost.project_id.length === 0 ) {
+        res.status(400).json({
+            message: "Could not post, please insert all fields"
         })
-    }).catch(err => {
-        res.status(500).json({
-            error: "Could not post action"
+    } else if(newPost.description.length > 0 || newPost.notes.length > 0 || newPost.project_id.length > 0) {
+        actionDb.insert(newPost).then(response => {
+            res.status(200).json({
+                message: "posted successfully"
+            })
+        }).catch(err => {
+            res.status(500).json({
+                error: "Could not post action"
+            })
         })
-    })
+    }
 })
 
 router.put("/:id", (req, res) => {
@@ -62,7 +68,7 @@ router.delete("/:id", (req, res) => {
         })
     }).catch(err => {
         res.status(500).json({
-            error: "Could not delete action"
+            error: "Could not delete"
         })
     })
 })
