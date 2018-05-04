@@ -1,28 +1,80 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card {
+  background-color: rgba(192, 185, 185, 0.6);
+  width: 80%;
+  margin: 1% 1.5%;
+  padding: 2%;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.card:hover {
+  cursor: pointer;
+  background-color: rgba(170, 172, 172, 0.6)
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+li {
+  list-style: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+h2 {
+  color: rgb(100, 93, 93);
 }
 
-.App-title {
-  font-size: 1.5em;
+p{
+  margin-top: 5%;
+  font-size: 1.3rem;
+  color: rgb(160, 154, 154)
 }
 
-.App-intro {
-  font-size: large;
+button {
+  cursor: pointer;
+  background-color: rgb(219, 197, 179);
+  color: rgb(255, 249, 245);
+  border: none;
+  font-size: 1.1rem;
+  width: 8vw;
+  height: 4vh;
+  margin-top: 3%;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button:hover {
+  width: 8.3vw;
+  height: 4.3vh;
+  font-size: 1.2rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  font-size: 1.6rem;
+  display: block;
+  margin-top: 4%;
+
+}
+
+.form button {
+  display: block;
+  width: 15vw;
+  height: 6vh;
+  margin: 4% auto;
+}
+
+.banner {
+  background-color: rgb(53, 50, 50);
+  height: 17vh;
+  color: rgb(236, 231, 231);
+  text-align: center;
+  font-size: 2.5rem;
+  padding-top: 2%;
 }
